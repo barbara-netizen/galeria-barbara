@@ -39,14 +39,14 @@ export default function HomePage() {
       <section className="relative min-h-[80vh] flex flex-col items-center justify-center px-5 text-center overflow-hidden">
         <div className="relative z-10 max-w-2xl mx-auto animate-fade-in">
           <p className="text-sm tracking-[0.25em] uppercase text-stone mb-6">
-            Arte · Ilustración · Animación · Literatura
+            Artista visual — Buenos Aires
           </p>
           <h1 className="font-serif text-5xl sm:text-7xl font-light leading-tight text-charcoal mb-6">
-            Barbara <br />
+            Bárbara <br />
             Gutiérrez
           </h1>
           <p className="text-charcoal/60 text-lg leading-relaxed max-w-md mx-auto mb-10">
-            Pintura, ilustración, animación y escritura.
+            Pintura, ilustración, animación y escritura hechas a mano.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

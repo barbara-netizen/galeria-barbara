@@ -110,7 +110,7 @@ export default async function PaintingDetailPage({ params }: Props) {
           {painting.status === "available" && (
             <div className="mt-4">
               <p className="text-sm text-stone mb-6">
-                Esta obra está disponible. Consultá el precio directamente con Barbara.
+                Esta obra está disponible. Consultá el precio directamente con Bárbara.
               </p>
               <PaintingInquiryForm paintingTitle={painting.title} />
             </div>

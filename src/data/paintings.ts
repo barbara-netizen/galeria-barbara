@@ -487,7 +487,7 @@ export const paintingSeries: PaintingSeries[] = [
   {
     slug: "obra-disponible",
     title: "Obra disponible",
-    description: "Obras originales disponibles para adquirir. Consultá el precio directamente con Barbara.",
+    description: "Obras originales disponibles para adquirir. Consultá el precio directamente con Bárbara.",
     paintings: obraDisponible,
   },
   {

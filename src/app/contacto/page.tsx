@@ -27,10 +27,10 @@ export default function ContactPage() {
           <div>
             <p className="text-xs tracking-[0.2em] uppercase text-stone mb-3">Email directo</p>
             <a
-              href="mailto:gutierrez.batarita@gmail.com"
+              href="mailto:gutierrez.barbarita@gmail.com"
               className="font-serif text-xl text-charcoal hover:text-terracotta transition-colors"
             >
-              gutierrez.batarita@gmail.com
+              gutierrez.barbarita@gmail.com
             </a>
           </div>
 

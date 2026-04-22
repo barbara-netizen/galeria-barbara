@@ -39,7 +39,7 @@ export default function AboutPage() {
           <div>
             <h2 className="font-serif text-2xl text-charcoal mb-4">Statement</h2>
             <p className="text-charcoal/70 leading-relaxed italic font-serif text-lg">
-              &ldquo;Mi obra se centra en la transformación y la potencia expresiva de los procesos manuales.&rdquo;
+              &ldquo;Trabajo con las manos, con la memoria y con lo que queda cuando algo cambia.&rdquo;
             </p>
           </div>
 
