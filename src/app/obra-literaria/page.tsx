@@ -102,23 +102,27 @@ export default function LiteraryPage() {
           </p>
           <p className="text-charcoal/70 leading-relaxed mb-10 max-w-xl">
             Una selección de cuentos para conocer mi escritura. Te lo regalo de corazón.
-            Descargalo en el formato que prefieras.
+            Leelo acá mismo o llevatelo para tu lector.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 mb-10">
-            <a
-              href="/downloads/turistas.pdf"
-              download
-              className="inline-block text-center px-8 py-3 bg-charcoal text-ivory text-sm tracking-wide hover:bg-terracotta transition-colors"
-            >
-              Descargar PDF
-            </a>
+          {/* Visor PDF */}
+          <div className="w-full mb-10">
+            <iframe
+              src="/downloads/turistas.pdf"
+              title="Turistas — vista previa"
+              className="w-full border border-stone/20 bg-stone/5"
+              style={{ aspectRatio: "1 / 1.414", maxHeight: "80vh" }}
+            />
+          </div>
+
+          {/* Descarga EPUB */}
+          <div className="mb-10">
             <a
               href="/downloads/turistas.epub"
               download
               className="inline-block text-center px-8 py-3 border border-charcoal text-charcoal text-sm tracking-wide hover:bg-charcoal hover:text-ivory transition-colors"
             >
-              Descargar EPUB
+              Descargar para dispositivos de lectura (EPUB)
             </a>
           </div>
 
