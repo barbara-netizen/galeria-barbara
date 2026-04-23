@@ -1,9 +1,22 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { paintingSeries } from "@/data/paintings";
 import type { Painting } from "@/types";
 
-export const metadata = { title: "Pintura" };
+export const metadata: Metadata = {
+  title: "Pintura — Obras originales de Bárbara Gutiérrez",
+  description:
+    "Galería de pinturas originales de Bárbara Gutiérrez: técnica mixta, óleo y acrílico. Algunas obras están disponibles para adquirir. Pintora argentina contemporánea radicada en Buenos Aires.",
+  alternates: { canonical: "/pintura" },
+  openGraph: {
+    title: "Pintura — Bárbara Gutiérrez",
+    description:
+      "Obras originales de Bárbara Gutiérrez, pintora argentina contemporánea. Técnica mixta, series y piezas disponibles para adquirir.",
+    url: "/pintura",
+    type: "website",
+  },
+};
 
 export default function PaintingPage() {
   return (

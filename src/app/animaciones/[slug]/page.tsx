@@ -3,6 +3,8 @@ import Link from "next/link";
 import { animations } from "@/data/animations";
 import AnimationInquiryForm from "@/components/forms/AnimationInquiryForm";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://barbaragutierrez.com.ar";
+
 interface Props {
   params: Promise<{ slug: string }>;
 }
@@ -13,9 +15,33 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
-  if (slug === "contratar") return { title: "Contratar animación" };
+  if (slug === "contratar") {
+    return {
+      title: "Contratar animación — Bárbara Gutiérrez",
+      description:
+        "Pedí presupuesto para un proyecto de animación con Bárbara Gutiérrez: animación cuadro a cuadro, stop motion, rotoscopia. Animadora experimental argentina, Buenos Aires.",
+      alternates: { canonical: "/animaciones/contratar" },
+    };
+  }
   const anim = animations.find((a) => a.slug === slug);
-  return { title: anim?.title ?? "Animación" };
+  if (!anim) return { title: "Animación no encontrada" };
+
+  const description =
+    anim.description ??
+    `"${anim.title}" — animación de Bárbara Gutiérrez. Animadora experimental argentina radicada en Buenos Aires.`;
+
+  return {
+    title: `${anim.title} — Animación de Bárbara Gutiérrez`,
+    description,
+    alternates: { canonical: `/animaciones/${slug}` },
+    openGraph: {
+      title: `${anim.title} — Bárbara Gutiérrez`,
+      description,
+      url: `/animaciones/${slug}`,
+      type: "video.other",
+      images: [{ url: anim.posterImage, alt: `${anim.title}, animación de Bárbara Gutiérrez` }],
+    },
+  };
 }
 
 export default async function AnimationDetailPage({ params }: Props) {
@@ -45,12 +71,32 @@ export default async function AnimationDetailPage({ params }: Props) {
   const anim = animations.find((a) => a.slug === slug);
   if (!anim) notFound();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    name: anim.title,
+    description: anim.description,
+    url: `${siteUrl}/animaciones/${slug}`,
+    thumbnailUrl: `${siteUrl}${anim.posterImage}`,
+    creator: {
+      "@type": "Person",
+      name: "Bárbara Gutiérrez",
+      url: siteUrl,
+    },
+    ...(anim.duration && { duration: anim.duration }),
+    ...(anim.client && { producer: { "@type": "Organization", name: anim.client } }),
+  };
+
   return (
     <div className="max-w-5xl mx-auto px-5 sm:px-8 py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Link href="/animaciones" className="inline-flex items-center gap-1 text-sm text-stone hover:text-charcoal transition-colors mb-8">
         ← Volver
       </Link>
-      <nav className="text-xs text-stone mb-10 flex gap-2">
+      <nav className="text-xs text-stone mb-10 flex gap-2" aria-label="Breadcrumb">
         <Link href="/" className="hover:text-charcoal transition-colors">Inicio</Link>
         <span>/</span>
         <Link href="/animaciones" className="hover:text-charcoal transition-colors">Animaciones</Link>

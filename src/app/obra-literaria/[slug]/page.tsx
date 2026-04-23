@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ebooks } from "@/data/ebooks";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://barbaragutierrez.com.ar";
+
 interface Props {
   params: Promise<{ slug: string }>;
 }
@@ -14,7 +16,24 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const book = ebooks.find((b) => b.slug === slug);
-  return { title: book?.title ?? "Libro" };
+  if (!book) return { title: "Libro no encontrado" };
+
+  const description =
+    book.synopsis ??
+    `"${book.title}" — obra literaria de Bárbara Gutiérrez. Disponible en formato digital.`;
+
+  return {
+    title: `${book.title} — ${book.genre ?? "Obra literaria"} de Bárbara Gutiérrez`,
+    description,
+    alternates: { canonical: `/obra-literaria/${slug}` },
+    openGraph: {
+      title: `${book.title} — Bárbara Gutiérrez`,
+      description,
+      url: `/obra-literaria/${slug}`,
+      type: "book",
+      images: [{ url: book.coverImage, alt: `Portada de "${book.title}" de Bárbara Gutiérrez` }],
+    },
+  };
 }
 
 export default async function EbookDetailPage({ params }: Props) {
@@ -23,12 +42,34 @@ export default async function EbookDetailPage({ params }: Props) {
 
   if (!book) notFound();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    name: book.title,
+    url: `${siteUrl}/obra-literaria/${slug}`,
+    image: `${siteUrl}${book.coverImage}`,
+    author: {
+      "@type": "Person",
+      name: book.author ?? "Bárbara Gutiérrez",
+      url: siteUrl,
+    },
+    ...(book.genre && { genre: book.genre }),
+    ...(book.synopsis && { description: book.synopsis }),
+    ...(book.pages && { numberOfPages: book.pages }),
+    bookFormat: "EBook",
+    inLanguage: "es",
+  };
+
   return (
     <div className="max-w-5xl mx-auto px-5 sm:px-8 py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Link href="/obra-literaria" className="inline-flex items-center gap-1 text-sm text-stone hover:text-charcoal transition-colors mb-8">
         ← Volver
       </Link>
-      <nav className="text-xs text-stone mb-10 flex gap-2">
+      <nav className="text-xs text-stone mb-10 flex gap-2" aria-label="Breadcrumb">
         <Link href="/" className="hover:text-charcoal transition-colors">Inicio</Link>
         <span>/</span>
         <Link href="/obra-literaria" className="hover:text-charcoal transition-colors">Obra literaria</Link>
@@ -41,7 +82,7 @@ export default async function EbookDetailPage({ params }: Props) {
         <div className="relative aspect-[2/3] bg-stone/10 shadow-md max-w-sm mx-auto lg:mx-0 w-full">
           <Image
             src={book.coverImage}
-            alt={book.title}
+            alt={`Portada de "${book.title}" — ${book.genre ?? "libro"} de Bárbara Gutiérrez`}
             fill
             sizes="(max-width: 1024px) 100vw, 40vw"
             className="object-cover"

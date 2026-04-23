@@ -1,7 +1,20 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import ContactForm from "@/components/forms/ContactForm";
 
-export const metadata = { title: "Contacto" };
+export const metadata: Metadata = {
+  title: "Contacto — Bárbara Gutiérrez",
+  description:
+    "Escribile a Bárbara Gutiérrez para consultar por pinturas originales, encargar una ilustración o hablar de un proyecto de animación. Artista visual radicada en Buenos Aires.",
+  alternates: { canonical: "/contacto" },
+  openGraph: {
+    title: "Contacto — Bárbara Gutiérrez",
+    description:
+      "Consultá por obras, ilustraciones o proyectos de animación. Artista visual argentina, Buenos Aires.",
+    url: "/contacto",
+    type: "website",
+  },
+};
 
 export default function ContactPage() {
   return (

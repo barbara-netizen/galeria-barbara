@@ -1,6 +1,19 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata = { title: "Obra literaria" };
+export const metadata: Metadata = {
+  title: "Obra literaria y servicios editoriales — Bárbara Gutiérrez",
+  description:
+    "Obra literaria de Bárbara Gutiérrez: cuentos, escritura y textos digitales. También servicios editoriales: corrección, diseño editorial, ilustración de portadas y maquetación.",
+  alternates: { canonical: "/obra-literaria" },
+  openGraph: {
+    title: "Obra literaria y servicios editoriales — Bárbara Gutiérrez",
+    description:
+      "Textos, cuentos y libros digitales de Bárbara Gutiérrez. Servicios editoriales: corrección, diseño, portadas y maquetación.",
+    url: "/obra-literaria",
+    type: "website",
+  },
+};
 
 export default function LiteraryPage() {
   return (

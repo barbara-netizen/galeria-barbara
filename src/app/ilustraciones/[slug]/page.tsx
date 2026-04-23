@@ -4,6 +4,8 @@ import Link from "next/link";
 import { illustrations } from "@/data/illustrations";
 import MercadoPagoButton from "@/components/commerce/MercadoPagoButton";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://barbaragutierrez.com.ar";
+
 interface Props {
   params: Promise<{ slug: string }>;
 }
@@ -15,7 +17,24 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const ill = illustrations.find((i) => i.slug === slug);
-  return { title: ill?.title ?? "Ilustración" };
+  if (!ill) return { title: "Ilustración no encontrada" };
+
+  const description =
+    ill.description ??
+    `"${ill.title}" — ilustración original de Bárbara Gutiérrez disponible en licencias digital personal, editorial y comercial. Ilustradora argentina, Buenos Aires.`;
+
+  return {
+    title: `${ill.title} — Ilustración de Bárbara Gutiérrez`,
+    description,
+    alternates: { canonical: `/ilustraciones/${slug}` },
+    openGraph: {
+      title: `${ill.title} — Bárbara Gutiérrez`,
+      description,
+      url: `/ilustraciones/${slug}`,
+      type: "article",
+      images: [{ url: ill.previewImage, alt: `${ill.title}, ilustración de Bárbara Gutiérrez` }],
+    },
+  };
 }
 
 export default async function IllustrationDetailPage({ params }: Props) {
@@ -24,12 +43,38 @@ export default async function IllustrationDetailPage({ params }: Props) {
 
   if (!ill) notFound();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "VisualArtwork",
+    name: ill.title,
+    url: `${siteUrl}/ilustraciones/${slug}`,
+    image: `${siteUrl}${ill.previewImage}`,
+    creator: {
+      "@type": "Person",
+      name: "Bárbara Gutiérrez",
+      url: siteUrl,
+    },
+    ...(ill.description && { description: ill.description }),
+    offers: ill.licenses.map((license) => ({
+      "@type": "Offer",
+      name: license.label,
+      description: license.description,
+      price: license.price,
+      priceCurrency: license.currency,
+      availability: "https://schema.org/InStock",
+    })),
+  };
+
   return (
     <div className="max-w-6xl mx-auto px-5 sm:px-8 py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Link href="/ilustraciones" className="inline-flex items-center gap-1 text-sm text-stone hover:text-charcoal transition-colors mb-8">
         ← Volver
       </Link>
-      <nav className="text-xs text-stone mb-10 flex gap-2">
+      <nav className="text-xs text-stone mb-10 flex gap-2" aria-label="Breadcrumb">
         <Link href="/" className="hover:text-charcoal transition-colors">Inicio</Link>
         <span>/</span>
         <Link href="/ilustraciones" className="hover:text-charcoal transition-colors">Ilustraciones</Link>
@@ -42,7 +87,7 @@ export default async function IllustrationDetailPage({ params }: Props) {
         <div className="relative aspect-square bg-stone/10">
           <Image
             src={ill.previewImage}
-            alt={ill.title}
+            alt={`${ill.title} — ilustración original de Bárbara Gutiérrez`}
             fill
             sizes="(max-width: 1024px) 100vw, 50vw"
             className="object-contain"

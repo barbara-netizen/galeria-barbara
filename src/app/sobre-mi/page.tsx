@@ -1,6 +1,20 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata = { title: "Sobre mí" };
+export const metadata: Metadata = {
+  title: "Sobre Bárbara Gutiérrez — Artista Visual Argentina",
+  description:
+    "Bárbara Gutiérrez es artista visual, pintora, ilustradora y animadora experimental argentina. Autodidacta, trabaja en Buenos Aires entre la pintura, el dibujo, la animación, la escritura y el diseño editorial.",
+  alternates: { canonical: "/sobre-mi" },
+  openGraph: {
+    title: "Sobre Bárbara Gutiérrez — Artista Visual Argentina",
+    description:
+      "Pintora, ilustradora y animadora experimental argentina radicada en Buenos Aires. Conocé su trayectoria y forma de trabajo.",
+    url: "/sobre-mi",
+    type: "profile",
+    images: [{ url: "/images/branding/barbara-retrato.jpg", alt: "Bárbara Gutiérrez — Artista Visual" }],
+  },
+};
 
 export default function AboutPage() {
   return (
@@ -18,7 +32,7 @@ export default function AboutPage() {
         <div className="lg:col-span-1">
           <img
             src="/images/branding/barbara-retrato.jpg"
-            alt="Bárbara Gutiérrez"
+            alt="Bárbara Gutiérrez, artista visual y pintora argentina radicada en Buenos Aires"
             className="aspect-[3/4] object-cover w-full"
           />
           <p className="text-xs text-stone mt-3 text-center">Foto: Arturo Villegas</p>

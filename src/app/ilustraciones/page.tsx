@@ -1,8 +1,21 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { illustrations } from "@/data/illustrations";
 
-export const metadata = { title: "Ilustraciones" };
+export const metadata: Metadata = {
+  title: "Ilustraciones — Licencias digitales de Bárbara Gutiérrez",
+  description:
+    "Ilustraciones originales de Bárbara Gutiérrez disponibles en licencias digitales: personal, editorial y comercial. Ilustradora argentina radicada en Buenos Aires.",
+  alternates: { canonical: "/ilustraciones" },
+  openGraph: {
+    title: "Ilustraciones — Bárbara Gutiérrez",
+    description:
+      "Ilustraciones originales con licencias digitales. Uso personal, editorial y comercial. Ilustradora argentina, Buenos Aires.",
+    url: "/ilustraciones",
+    type: "website",
+  },
+};
 
 export default function IllustrationsPage() {
   return (

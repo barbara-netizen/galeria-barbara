@@ -1,8 +1,21 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { animations } from "@/data/animations";
 
-export const metadata = { title: "Animaciones" };
+export const metadata: Metadata = {
+  title: "Animaciones — Bárbara Gutiérrez, animadora experimental argentina",
+  description:
+    "Portfolio de animaciones de Bárbara Gutiérrez: trabajos cuadro a cuadro, stop motion y proyectos por encargo. Animadora experimental argentina radicada en Buenos Aires.",
+  alternates: { canonical: "/animaciones" },
+  openGraph: {
+    title: "Animaciones — Bárbara Gutiérrez",
+    description:
+      "Animaciones cuadro a cuadro, stop motion y proyectos por encargo. Animadora experimental argentina, Buenos Aires.",
+    url: "/animaciones",
+    type: "website",
+  },
+};
 
 export default function AnimationsPage() {
   const featured = animations.find((a) => a.featured);

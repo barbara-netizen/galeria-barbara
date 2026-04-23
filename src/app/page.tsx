@@ -1,5 +1,20 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "Bárbara Gutiérrez — Artista Visual, Pintora e Ilustradora en Buenos Aires",
+  description:
+    "Portfolio oficial de Bárbara Gutiérrez: pinturas originales, ilustraciones digitales, animaciones cuadro a cuadro y obra literaria. Artista visual argentina radicada en Buenos Aires.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "Bárbara Gutiérrez — Artista Visual, Pintora e Ilustradora en Buenos Aires",
+    description:
+      "Portfolio oficial de Bárbara Gutiérrez: pinturas, ilustraciones, animaciones y escritura. Artista multidisciplinaria argentina radicada en Buenos Aires.",
+    url: "/",
+    type: "website",
+  },
+};
 
 const categories = [
   {
