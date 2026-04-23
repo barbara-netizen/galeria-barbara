@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ebooks } from "@/data/ebooks";
 
 interface Props {
   searchParams: Promise<{ status?: string; product?: string }>;
@@ -12,6 +13,8 @@ export default async function GraciasPage({ searchParams }: Props) {
 
   const isSuccess = status === "success";
   const isPending = status === "pending";
+
+  const ebook = product ? ebooks.find((e) => e.slug === product) : null;
 
   return (
     <div className="min-h-[60vh] flex items-center justify-center px-5">
@@ -30,8 +33,25 @@ export default async function GraciasPage({ searchParams }: Props) {
             </div>
             <h1 className="font-serif text-3xl text-charcoal mb-4">Pago aprobado</h1>
             <p className="text-charcoal/60 mb-8 leading-relaxed">
-              Gracias por tu compra. En breve te llega el mail con los datos de entrega.
+              Gracias por tu compra. Acá están tus archivos de descarga.
             </p>
+
+            {ebook && (
+              <div className="space-y-4 mb-10">
+                <p className="font-serif text-xl text-charcoal">{ebook.title}</p>
+                <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                  {ebook.formats.map((format) => (
+                    <a
+                      key={format}
+                      href={`/api/downloads?product=${ebook.slug}&format=${format}`}
+                      className="inline-block px-8 py-3 bg-charcoal text-ivory text-sm tracking-wide hover:bg-terracotta transition-colors"
+                    >
+                      Descargar {format.toUpperCase()}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
           </>
         )}
 

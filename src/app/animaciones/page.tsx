@@ -22,6 +22,22 @@ export default function AnimationsPage() {
         </p>
       </header>
 
+      {/* Vimeo embed destacado */}
+      {featured?.vimeoId && featured.vimeoId !== "VIDEO_ID" && (
+        <section className="mb-20">
+          <div className="relative aspect-video bg-charcoal/10 overflow-hidden">
+            <iframe
+              src={`https://player.vimeo.com/video/${featured.vimeoId}?title=0&byline=0&portrait=0`}
+              className="absolute inset-0 w-full h-full"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+              title={featured.title}
+            />
+          </div>
+          <p className="text-xs text-stone mt-3">Promocional de animación</p>
+        </section>
+      )}
+
       {/* Reel destacado */}
       {featured && (
         <section className="mb-20">
@@ -99,6 +115,23 @@ export default function AnimationsPage() {
           className="inline-block px-10 py-3 bg-charcoal text-ivory text-sm tracking-wide hover:bg-terracotta transition-colors"
         >
           Pedir presupuesto
+        </Link>
+      </div>
+
+      {/* ANIMATE! — invitación a conversar */}
+      <div className="mt-20 border-t border-stone/20 pt-16 text-center">
+        <h2 className="font-serif text-3xl text-charcoal mb-4">ANIMATE!</h2>
+        <p className="text-charcoal/60 mb-8 max-w-lg mx-auto leading-relaxed">
+          Si te interesa la animación cuadro a cuadro, la rotoscopia o las técnicas manuales,
+          charlemos. No es un curso con precio fijo: es una invitación a sentarnos con un café
+          (virtual o de verdad) y ver qué proyecto tenés en mente. A veces basta con hablarlo
+          para que empiece a moverse.
+        </p>
+        <Link
+          href="/animaciones/contratar"
+          className="inline-block px-10 py-3 border border-charcoal text-charcoal text-sm tracking-wide hover:bg-charcoal hover:text-ivory transition-colors"
+        >
+          Charlemos
         </Link>
       </div>
     </div>

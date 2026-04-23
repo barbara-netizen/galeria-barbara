@@ -63,7 +63,8 @@ export interface Animation {
   title: string;
   description: string;
   posterImage: string;
-  videoUrl: string;
+  videoUrl?: string;
+  vimeoId?: string;
   category: AnimationCategory;
   duration?: string;
   role?: string;

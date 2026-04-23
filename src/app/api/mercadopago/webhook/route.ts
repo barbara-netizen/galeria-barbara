@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { MercadoPagoConfig, Payment } from "mercadopago";
+import { createDownloadToken } from "@/lib/tokens";
 
 export async function POST(req: NextRequest) {
   try {
@@ -27,8 +28,13 @@ export async function POST(req: NextRequest) {
       const productId = payment.metadata?.product_id;
       const buyerEmail = payment.payer?.email;
 
-      console.log(`Pago aprobado: ${productType} - ${productId} - ${buyerEmail}`);
-      // Aquí podrías: guardar en DB, enviar email, generar token de descarga, etc.
+      if (productType === "ebook" && productId) {
+        const token = createDownloadToken(productId);
+        console.log(`Pago aprobado: ${productType} - ${productId} - ${buyerEmail} - Token: ${token}`);
+        // Aquí podrías enviar email con el link de descarga
+      } else {
+        console.log(`Pago aprobado: ${productType} - ${productId} - ${buyerEmail}`);
+      }
     }
 
     return NextResponse.json({ received: true });

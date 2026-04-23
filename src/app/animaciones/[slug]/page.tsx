@@ -60,21 +60,35 @@ export default async function AnimationDetailPage({ params }: Props) {
 
       {/* Video embed */}
       <div className="relative aspect-video bg-charcoal mb-10">
-        {anim.videoUrl.startsWith("/videos/") ? (
-          <video
-            src={anim.videoUrl}
-            controls
-            playsInline
-            className="absolute inset-0 w-full h-full"
-          />
-        ) : (
+        {anim.videoUrl ? (
+          anim.videoUrl.startsWith("/videos/") ? (
+            <video
+              src={anim.videoUrl}
+              controls
+              playsInline
+              className="absolute inset-0 w-full h-full"
+            />
+          ) : (
+            <iframe
+              src={anim.videoUrl}
+              title={anim.title}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="absolute inset-0 w-full h-full"
+            />
+          )
+        ) : anim.vimeoId ? (
           <iframe
-            src={anim.videoUrl}
+            src={`https://player.vimeo.com/video/${anim.vimeoId}?title=0&byline=0&portrait=0`}
             title={anim.title}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allow="autoplay; fullscreen; picture-in-picture"
             allowFullScreen
             className="absolute inset-0 w-full h-full"
           />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center text-ivory/60 text-sm">
+            Video no disponible
+          </div>
         )}
       </div>
 

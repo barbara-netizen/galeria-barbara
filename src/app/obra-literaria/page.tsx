@@ -17,7 +17,7 @@ export default function LiteraryPage() {
         <p className="text-xs tracking-[0.25em] uppercase text-stone mb-3">Escritura</p>
         <h1 className="font-serif text-5xl font-light text-charcoal mb-4">Obra literaria</h1>
         <p className="text-charcoal/60 leading-relaxed">
-          Acá vas a encontrar textos y libros digitales para leer y descargar.
+          Acá vas a encontrar textos y libros.
         </p>
       </header>
 
@@ -40,11 +40,8 @@ export default function LiteraryPage() {
             <p className="font-serif text-xl text-charcoal group-hover:text-terracotta transition-colors mb-1">
               {book.title}
             </p>
-            <p className="text-sm text-stone mb-2">
+            <p className="text-sm text-stone">
               {book.formats.join(" · ").toUpperCase()}
-            </p>
-            <p className="text-sm font-medium text-charcoal">
-              USD {book.price.toFixed(2)}
             </p>
           </Link>
         ))}
@@ -54,15 +51,14 @@ export default function LiteraryPage() {
       {pack && (
         <div className="border border-stone/20 p-8 sm:p-12 flex flex-col sm:flex-row gap-8 items-center">
           <div className="text-center sm:text-left flex-1">
-            <p className="text-xs tracking-[0.25em] uppercase text-stone mb-2">Precio especial</p>
+            <p className="text-xs tracking-[0.25em] uppercase text-stone mb-2">Colección</p>
             <h2 className="font-serif text-3xl font-light text-charcoal mb-3">{pack.title}</h2>
             <p className="text-charcoal/60 mb-6 leading-relaxed">{pack.synopsis}</p>
-            <p className="font-serif text-2xl text-charcoal mb-6">USD {pack.price.toFixed(2)}</p>
             <Link
               href={`/obra-literaria/${pack.slug}`}
-              className="inline-block px-8 py-3 bg-charcoal text-ivory text-sm tracking-wide hover:bg-terracotta transition-colors"
+              className="inline-block px-8 py-3 border border-charcoal text-charcoal text-sm tracking-wide hover:bg-charcoal hover:text-ivory transition-colors"
             >
-              Comprar pack
+              Ver colección
             </Link>
           </div>
           <div className="flex gap-3 shrink-0">

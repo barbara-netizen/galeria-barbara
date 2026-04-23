@@ -2,7 +2,6 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { ebooks } from "@/data/ebooks";
-import MercadoPagoButton from "@/components/commerce/MercadoPagoButton";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -15,7 +14,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const book = ebooks.find((b) => b.slug === slug);
-  return { title: book?.title ?? "Ebook" };
+  return { title: book?.title ?? "Libro" };
 }
 
 export default async function EbookDetailPage({ params }: Props) {
@@ -73,16 +72,6 @@ export default async function EbookDetailPage({ params }: Props) {
                 <dd className="text-charcoal">{book.pages}</dd>
               </div>
             )}
-            <div>
-              <dt className="text-stone mb-1">Entrega</dt>
-              <dd className="text-charcoal">Descarga inmediata</dd>
-            </div>
-            <div>
-              <dt className="text-stone mb-1">Precio</dt>
-              <dd className="font-serif text-xl text-charcoal">
-                USD {book.price.toFixed(2)}
-              </dd>
-            </div>
           </dl>
 
           {/* Muestra */}
@@ -97,17 +86,12 @@ export default async function EbookDetailPage({ params }: Props) {
             </a>
           )}
 
-          <MercadoPagoButton
-            productId={book.slug}
-            productType="ebook"
-            title={book.title}
-            price={book.price}
-            currency={book.currency}
-          />
-
-          <p className="text-xs text-stone/60 mt-4 text-center">
-            Pago seguro vía MercadoPago · Descarga inmediata al aprobar
-          </p>
+          <Link
+            href="/contacto"
+            className="block text-center px-6 py-3 bg-charcoal text-ivory text-sm tracking-wide hover:bg-terracotta transition-colors"
+          >
+            Consultar por este libro
+          </Link>
         </div>
       </div>
     </div>

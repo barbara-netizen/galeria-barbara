@@ -8,7 +8,7 @@ export const animations: Animation[] = [
     description: "Animación cuadro a cuadro, tinta y acuarela sobre papel.",
     posterImage: "/images/animations/sonequebordaba1.jpg",
     videoUrl: "/videos/sonequebordaba1.mp4",
-    vimeoId: "1088779377",
+    vimeoId: "1087719444",
     category: "cuadro-x-cuadro",
     role: "Animación, dirección de arte",
     tools: ["Procreate", "tinta", "acuarela"],
