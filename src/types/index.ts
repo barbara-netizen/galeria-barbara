@@ -85,11 +85,7 @@ export interface Ebook {
   synopsis: string;
   formats: EbookFormat[];
   pages?: number;
-  price: number;
-  currency: "ARS" | "USD";
   sampleUrl?: string;
-  downloadAssetId: string;
-  isBundle?: boolean;
 }
 
 // ─── MercadoPago ─────────────────────────────────────────────────────────────

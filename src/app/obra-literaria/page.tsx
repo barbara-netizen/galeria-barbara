@@ -1,89 +1,54 @@
 import Link from "next/link";
-import Image from "next/image";
-import { ebooks } from "@/data/ebooks";
 
 export const metadata = { title: "Obra literaria" };
 
 export default function LiteraryPage() {
-  const books = ebooks.filter((b) => !b.isBundle);
-  const pack = ebooks.find((b) => b.isBundle);
-
   return (
     <div className="max-w-7xl mx-auto px-5 sm:px-8 py-16">
       <Link href="/" className="inline-flex items-center gap-1 text-sm text-stone hover:text-charcoal transition-colors mb-8">
         ← Volver
       </Link>
-      <header className="mb-16 max-w-xl">
+
+      <header className="mb-20 max-w-xl">
         <p className="text-xs tracking-[0.25em] uppercase text-stone mb-3">Escritura</p>
         <h1 className="font-serif text-5xl font-light text-charcoal mb-4">Obra literaria</h1>
         <p className="text-charcoal/60 leading-relaxed">
-          Acá vas a encontrar textos y libros.
+          Textos, antologías y servicios editoriales.
         </p>
       </header>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-20">
-        {books.map((book) => (
-          <Link key={book.slug} href={`/obra-literaria/${book.slug}`} className="group block">
-            {/* Portada */}
-            <div className="relative aspect-[2/3] bg-stone/10 overflow-hidden mb-5 shadow-sm group-hover:shadow-md transition-shadow">
-              <Image
-                src={book.coverImage}
-                alt={book.title}
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
+      {/* ─── SERVICIOS EDITORIALES ─────────────────────────────────────────── */}
+      <section className="mb-24">
+        <div className="max-w-3xl">
+          <p className="text-xs tracking-[0.25em] uppercase text-stone mb-3">Servicios</p>
+          <h2 className="font-serif text-4xl sm:text-5xl font-light text-charcoal mb-6">
+            Servicios Editoriales
+          </h2>
+          <p className="text-charcoal/60 leading-relaxed mb-10 max-w-2xl">
+            Si estás escribiendo un libro o tenés un proyecto editorial en mente, puedo acompañarte
+            en el proceso. Trabajo en corrección de textos, diseño editorial, ilustración de portadas
+            y maquetación. Escribime y charlamos.
+          </p>
 
-            {/* Info */}
-            <p className="text-xs tracking-widest uppercase text-stone mb-1">{book.genre}</p>
-            <p className="font-serif text-xl text-charcoal group-hover:text-terracotta transition-colors mb-1">
-              {book.title}
-            </p>
-            <p className="text-sm text-stone">
-              {book.formats.join(" · ").toUpperCase()}
-            </p>
-          </Link>
-        ))}
-      </div>
-
-      {/* Pack */}
-      {pack && (
-        <div className="border border-stone/20 p-8 sm:p-12 flex flex-col sm:flex-row gap-8 items-center">
-          <div className="text-center sm:text-left flex-1">
-            <p className="text-xs tracking-[0.25em] uppercase text-stone mb-2">Colección</p>
-            <h2 className="font-serif text-3xl font-light text-charcoal mb-3">{pack.title}</h2>
-            <p className="text-charcoal/60 mb-6 leading-relaxed">{pack.synopsis}</p>
-            <Link
-              href={`/obra-literaria/${pack.slug}`}
-              className="inline-block px-8 py-3 border border-charcoal text-charcoal text-sm tracking-wide hover:bg-charcoal hover:text-ivory transition-colors"
-            >
-              Ver colección
-            </Link>
-          </div>
-          <div className="flex gap-3 shrink-0">
-            {books.map((b) => (
-              <div key={b.slug} className="relative w-20 aspect-[2/3] shadow-sm">
-                <Image src={b.coverImage} alt={b.title} fill className="object-cover" sizes="80px" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
+            {[
+              { title: "Corrección", desc: "Revisión ortotipográfica, de estilo y de consistencia." },
+              { title: "Diseño editorial", desc: "Propuesta visual para el interior del libro." },
+              { title: "Portadas", desc: "Ilustración y diseño de tapa a medida." },
+              { title: "Maquetación", desc: "Armado profesional de archivos para imprenta o digital." },
+            ].map((s) => (
+              <div key={s.title} className="border border-stone/20 p-6">
+                <h3 className="font-serif text-lg text-charcoal mb-2">{s.title}</h3>
+                <p className="text-sm text-charcoal/60 leading-relaxed">{s.desc}</p>
               </div>
             ))}
           </div>
         </div>
-      )}
 
-      {/* Servicios Editoriales */}
-      <div className="mt-20 border-t border-stone/20 pt-16 max-w-2xl mx-auto">
-        <p className="text-xs tracking-[0.25em] uppercase text-stone mb-3">Servicios</p>
-        <h2 className="font-serif text-3xl font-light text-charcoal mb-4">Servicios Editoriales</h2>
-        <p className="text-charcoal/60 leading-relaxed mb-8">
-          Si estás escribiendo un libro o tenés un proyecto editorial en mente, puedo acompañarte
-          en el proceso. Trabajo en corrección de textos, diseño editorial, ilustración de portadas
-          y maquetación. Escribime y charlamos.
-        </p>
         <form
           action="https://formspree.io/f/xpqkygdo"
           method="POST"
-          className="space-y-6"
+          className="max-w-2xl space-y-6"
         >
           <div>
             <label htmlFor="ed-name" className="block text-sm text-charcoal/70 mb-1">Nombre</label>
@@ -125,7 +90,44 @@ export default function LiteraryPage() {
             Enviar consulta
           </button>
         </form>
-      </div>
+      </section>
+
+      {/* ─── MUESTRA LITERARIA ─────────────────────────────────────────────── */}
+      <section className="border-t border-stone/20 pt-20">
+        <div className="max-w-3xl">
+          <p className="text-xs tracking-[0.25em] uppercase text-stone mb-3">Muestra literaria</p>
+          <h2 className="font-serif text-3xl font-light text-charcoal mb-2">Turistas</h2>
+          <p className="text-charcoal/60 leading-relaxed mb-8">
+            Antología de 18 cuentos · Bárbara Gutiérrez
+          </p>
+          <p className="text-charcoal/70 leading-relaxed mb-10 max-w-xl">
+            Una selección de cuentos para conocer mi escritura. Te lo regalo de corazón.
+            Descargalo en el formato que prefieras.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 mb-10">
+            <a
+              href="/downloads/turistas.pdf"
+              download
+              className="inline-block text-center px-8 py-3 bg-charcoal text-ivory text-sm tracking-wide hover:bg-terracotta transition-colors"
+            >
+              Descargar PDF
+            </a>
+            <a
+              href="/downloads/turistas.epub"
+              download
+              className="inline-block text-center px-8 py-3 border border-charcoal text-charcoal text-sm tracking-wide hover:bg-charcoal hover:text-ivory transition-colors"
+            >
+              Descargar EPUB
+            </a>
+          </div>
+
+          <p className="text-xs text-stone leading-relaxed max-w-lg">
+            © Bárbara Gutiérrez. Todos los derechos reservados. Para cualquier tipo de difusión
+            y/o uso comercial, contactarse con la autora.
+          </p>
+        </div>
+      </section>
     </div>
   );
 }

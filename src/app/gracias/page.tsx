@@ -1,20 +1,17 @@
 import Link from "next/link";
-import { ebooks } from "@/data/ebooks";
 
 interface Props {
-  searchParams: Promise<{ status?: string; product?: string }>;
+  searchParams: Promise<{ status?: string }>;
 }
 
 export const metadata = { title: "Gracias" };
 
 export default async function GraciasPage({ searchParams }: Props) {
   const params = await searchParams;
-  const { status, product } = params;
+  const { status } = params;
 
   const isSuccess = status === "success";
   const isPending = status === "pending";
-
-  const ebook = product ? ebooks.find((e) => e.slug === product) : null;
 
   return (
     <div className="min-h-[60vh] flex items-center justify-center px-5">
@@ -31,27 +28,10 @@ export default async function GraciasPage({ searchParams }: Props) {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
               </svg>
             </div>
-            <h1 className="font-serif text-3xl text-charcoal mb-4">Pago aprobado</h1>
+            <h1 className="font-serif text-3xl text-charcoal mb-4">Mensaje enviado</h1>
             <p className="text-charcoal/60 mb-8 leading-relaxed">
-              Gracias por tu compra. Acá están tus archivos de descarga.
+              Gracias por escribirme. Te respondo a la brevedad.
             </p>
-
-            {ebook && (
-              <div className="space-y-4 mb-10">
-                <p className="font-serif text-xl text-charcoal">{ebook.title}</p>
-                <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                  {ebook.formats.map((format) => (
-                    <a
-                      key={format}
-                      href={`/api/downloads?product=${ebook.slug}&format=${format}`}
-                      className="inline-block px-8 py-3 bg-charcoal text-ivory text-sm tracking-wide hover:bg-terracotta transition-colors"
-                    >
-                      Descargar {format.toUpperCase()}
-                    </a>
-                  ))}
-                </div>
-              </div>
-            )}
           </>
         )}
 
@@ -79,7 +59,7 @@ export default async function GraciasPage({ searchParams }: Props) {
             </div>
             <h1 className="font-serif text-3xl text-charcoal mb-4">Algo salió mal</h1>
             <p className="text-charcoal/60 mb-8 leading-relaxed">
-              No pude confirmar el pago. Si seguís con el problema, escribime.
+              No pude confirmar el envío. Si seguís con el problema, escribime.
             </p>
           </>
         )}
