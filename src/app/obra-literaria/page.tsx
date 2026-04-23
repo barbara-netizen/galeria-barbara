@@ -101,8 +101,7 @@ export default function LiteraryPage() {
             Antología de 18 cuentos · Bárbara Gutiérrez
           </p>
           <p className="text-charcoal/70 leading-relaxed mb-10 max-w-xl">
-            Una selección de cuentos para conocer mi escritura. Te lo regalo de corazón.
-            Leelo acá mismo o llevatelo para tu lector.
+            Va de regalo. Si querés, contame cuál te gustó y por qué.
           </p>
 
           {/* Visor PDF */}
@@ -125,6 +124,54 @@ export default function LiteraryPage() {
               Descargar para dispositivos de lectura (EPUB)
             </a>
           </div>
+
+          {/* Formulario de feedback */}
+          <form
+            action="https://formspree.io/f/xpqkygdo"
+            method="POST"
+            className="max-w-xl space-y-4 mb-10"
+          >
+            <input type="hidden" name="_subject" value="Feedback de Turistas" />
+            <div>
+              <label htmlFor="feedback-name" className="block text-sm text-charcoal/70 mb-1">Tu nombre</label>
+              <input
+                id="feedback-name"
+                name="name"
+                type="text"
+                required
+                className="w-full border border-stone/30 px-4 py-3 text-sm text-charcoal bg-transparent focus:outline-none focus:border-charcoal transition-colors"
+                placeholder="¿Cómo te llamás?"
+              />
+            </div>
+            <div>
+              <label htmlFor="feedback-email" className="block text-sm text-charcoal/70 mb-1">Tu email</label>
+              <input
+                id="feedback-email"
+                name="email"
+                type="email"
+                required
+                className="w-full border border-stone/30 px-4 py-3 text-sm text-charcoal bg-transparent focus:outline-none focus:border-charcoal transition-colors"
+                placeholder="tu@email.com"
+              />
+            </div>
+            <div>
+              <label htmlFor="feedback-message" className="block text-sm text-charcoal/70 mb-1">¿Cuál te gustó y por qué?</label>
+              <textarea
+                id="feedback-message"
+                name="message"
+                rows={4}
+                required
+                className="w-full border border-stone/30 px-4 py-3 text-sm text-charcoal bg-transparent focus:outline-none focus:border-charcoal transition-colors resize-none"
+                placeholder="Contame..."
+              />
+            </div>
+            <button
+              type="submit"
+              className="inline-block px-8 py-3 border border-charcoal text-charcoal text-sm tracking-wide hover:bg-charcoal hover:text-ivory transition-colors"
+            >
+              Enviar
+            </button>
+          </form>
 
           <p className="text-xs text-stone leading-relaxed max-w-lg">
             © Bárbara Gutiérrez. Todos los derechos reservados. Para cualquier tipo de difusión
