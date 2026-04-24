@@ -23,7 +23,6 @@ export default function AboutPage() {
         ← Volver
       </Link>
       <header className="mb-16">
-        <p className="text-xs tracking-[0.25em] uppercase text-stone mb-3">Artista</p>
         <h1 className="font-serif text-5xl font-light text-charcoal">Bárbara Gutiérrez</h1>
       </header>
 
@@ -40,20 +39,18 @@ export default function AboutPage() {
 
         {/* Bio y statement */}
         <div className="lg:col-span-2 space-y-8">
-          <div>
-            <h2 className="font-serif text-2xl text-charcoal mb-4">Sobre Bárbara</h2>
-            <p className="text-charcoal/70 leading-relaxed">
-              Soy una artista visual argentina, pintora, ilustradora,
-              animadora y escritora radicada en Buenos Aires. De formación mayormente
-              autodidacta, trabajo entre la pintura, el dibujo, la animación
-              experimental, la escritura, el textil y el diseño editorial.
+          <div className="space-y-4 text-charcoal/70 leading-relaxed">
+            <p>
+              Tengo 63 años y trabajo en Buenos Aires. Pinto, dibujo, ilustro, animo cuadro a cuadro y escribo. Me formé mayormente sola, pero me ayudó muchísima gente.
             </p>
-          </div>
-
-          <div>
-            <h2 className="font-serif text-2xl text-charcoal mb-4">Statement</h2>
-            <p className="text-charcoal/70 leading-relaxed italic font-serif text-lg">
-              &ldquo;Trabajo con las manos, con la memoria y con lo que queda cuando algo cambia.&rdquo;
+            <p>
+              Defino cómo trabajo, no qué voy a producir.
+            </p>
+            <p>
+              Pinto sobre lo pintado, tacho más de lo que corrijo, y en animación me banco el tiempo muerto porque ahí es donde aparecen los hallazgos. Debajo de cada cuadro hay varios cuadros más.
+            </p>
+            <p>
+              La pregunta que me sostiene es simple: ¿qué imagen ocurre cuando nadie la manda?
             </p>
           </div>
 
@@ -70,36 +67,9 @@ export default function AboutPage() {
                 Escribo de un tirón, casi sin pensar, y después tacho más de lo que corrijo. No sé qué voy a escribir hasta que ya está escrito. El control llega después, y es mínimo. En animación, el tiempo muerto — ese rato en que nada cierra todavía — es exactamente donde los hallazgos tienen espacio para ocurrir. No hay atajo que no corte algo importante.
               </p>
               <p>
-                No es rechazo tecnológico. Uso herramientas digitales, edito en computadora, le pregunto cosas a la IA. La tecnología entra como material, no como dirección. La pregunta que me queda es simple: ¿qué imagen ocurre cuando nadie la manda?
+                No es rechazo tecnológico. Uso herramientas digitales, edito en computadora, le pregunto cosas a la IA. La tecnología entra como material, no como dirección.
               </p>
             </div>
-          </div>
-
-          <div>
-            <h2 className="font-serif text-2xl text-charcoal mb-4">Disciplinas</h2>
-            <ul className="space-y-2 text-sm text-charcoal/70">
-              <li className="flex gap-3">
-                <span className="text-terracotta">—</span> Pintura
-              </li>
-              <li className="flex gap-3">
-                <span className="text-terracotta">—</span> Ilustración
-              </li>
-              <li className="flex gap-3">
-                <span className="text-terracotta">—</span> Animación experimental
-              </li>
-              <li className="flex gap-3">
-                <span className="text-terracotta">—</span> Escritura
-              </li>
-              <li className="flex gap-3">
-                <span className="text-terracotta">—</span> Dibujo
-              </li>
-              <li className="flex gap-3">
-                <span className="text-terracotta">—</span> Textil
-              </li>
-              <li className="flex gap-3">
-                <span className="text-terracotta">—</span> Diseño editorial
-              </li>
-            </ul>
           </div>
         </div>
       </div>

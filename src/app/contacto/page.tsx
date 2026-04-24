@@ -23,11 +23,9 @@ export default function ContactPage() {
         ← Volver
       </Link>
       <header className="mb-16 max-w-xl">
-        <p className="text-xs tracking-[0.25em] uppercase text-stone mb-3">Escribime</p>
         <h1 className="font-serif text-5xl font-light text-charcoal mb-4">Contacto</h1>
         <p className="text-charcoal/60 leading-relaxed">
-          Si querés consultar por una obra, proponer un trabajo o hacer una pregunta,
-          podés escribirme por acá.
+          Escribime. No garantizo resultados, pero sí que va a haber una respuesta real.
         </p>
       </header>
 

@@ -24,11 +24,9 @@ export default function IllustrationsPage() {
         ← Volver
       </Link>
       <header className="mb-16 max-w-xl">
-        <p className="text-xs tracking-[0.25em] uppercase text-stone mb-3">Catálogo</p>
         <h1 className="font-serif text-5xl font-light text-charcoal mb-4">Ilustraciones</h1>
         <p className="text-charcoal/60 leading-relaxed">
-          Estas ilustraciones están disponibles en formato digital. Cada una tiene
-          su tipo de uso y se envía después de la compra.
+          Ilustraciones en formato digital, con licencia. Si te interesa alguna, escribime y vemos el tipo de uso.
         </p>
       </header>
 
@@ -56,6 +54,39 @@ export default function IllustrationsPage() {
           </Link>
         ))}
       </div>
+
+      {/* ACTIVAR CUANDO HAYA FOTOS DE MOCKUPS */}
+      {false && (
+      <section className="mt-20 border-t border-stone/20 pt-16">
+        <div className="max-w-2xl mx-auto text-center mb-12">
+          <h2 className="font-serif text-3xl text-charcoal mb-4">Llevátela en tela</h2>
+          <p className="text-charcoal/60 max-w-lg mx-auto leading-relaxed">
+            Cualquiera de estas ilustraciones la puedo mandar a sublimar sobre tela: manteles, paños, almohadones, lo que te imagines. Si te interesa una pieza puntual o querés ver qué queda bien sobre qué, escribime.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          <div className="aspect-square bg-stone/10 flex items-center justify-center">
+            <span className="text-sm text-stone tracking-[0.15em] uppercase">Mockup 1</span>
+          </div>
+          <div className="aspect-square bg-stone/10 flex items-center justify-center">
+            <span className="text-sm text-stone tracking-[0.15em] uppercase">Mockup 2</span>
+          </div>
+          <div className="aspect-square bg-stone/10 flex items-center justify-center">
+            <span className="text-sm text-stone tracking-[0.15em] uppercase">Mockup 3</span>
+          </div>
+        </div>
+
+        <div className="text-center">
+          <Link
+            href="/contacto"
+            className="inline-block px-10 py-3 border border-charcoal text-charcoal text-sm tracking-wide hover:bg-charcoal hover:text-ivory transition-colors"
+          >
+            Consultar
+          </Link>
+        </div>
+      </section>
+      )}
     </div>
   );
 }

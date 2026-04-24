@@ -27,11 +27,9 @@ export default function AnimationsPage() {
         ← Volver
       </Link>
       <header className="mb-16 max-w-xl">
-        <p className="text-xs tracking-[0.25em] uppercase text-stone mb-3">Portfolio</p>
         <h1 className="font-serif text-5xl font-light text-charcoal mb-4">Animaciones</h1>
         <p className="text-charcoal/60 leading-relaxed">
-          Acá reuní trabajos de animación hechos cuadro a cuadro y otros proyectos
-          por encargo.
+          Cuadro a cuadro. Obra propia y trabajos por encargo. Tardo, pero por algo.
         </p>
       </header>
 
@@ -118,10 +116,10 @@ export default function AnimationsPage() {
       {/* CTA contratar */}
       <div className="mt-20 border-t border-stone/20 pt-16 text-center">
         <h2 className="font-serif text-3xl text-charcoal mb-4">
-          ¿Tenés un proyecto de animación?
+          ¿Tenés una idea?
         </h2>
         <p className="text-charcoal/60 mb-8 max-w-md mx-auto">
-          Si querés contarme una idea o pedir presupuesto, mandame los detalles.
+          Mandame los detalles y charlamos. No garantizo resultados, pero sí que va a haber algo real en el proceso.
         </p>
         <Link
           href="/animaciones/contratar"

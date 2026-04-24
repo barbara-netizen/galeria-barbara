@@ -116,7 +116,7 @@ export default function HomePage() {
       <section className="py-20 px-5 bg-charcoal text-ivory">
         <div className="max-w-2xl mx-auto text-center">
           <p className="font-serif text-2xl sm:text-3xl font-light leading-relaxed">
-            &ldquo;Trabajo con las manos, con la memoria y con lo que queda cuando algo cambia.&rdquo;
+            &ldquo;No es lo que dejás sino lo que te llevás de tanto haber mirado.&rdquo;
           </p>
           <Link
             href="/sobre-mi"
@@ -131,10 +131,10 @@ export default function HomePage() {
       <section className="py-20 px-5 text-center">
         <div className="max-w-lg mx-auto">
           <h2 className="font-serif text-3xl text-charcoal mb-4">
-            ¿Tenés un proyecto en mente?
+            ¿Tenés una idea?
           </h2>
           <p className="text-charcoal/60 mb-8 leading-relaxed">
-            Si querés consultar por una obra, una ilustración o un proyecto, escribime por acá.
+            Obra, ilustración, animación, lo que sea. Escribime.
           </p>
           <Link
             href="/contacto"

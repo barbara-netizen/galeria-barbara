@@ -26,11 +26,9 @@ export default function PaintingPage() {
       </Link>
       {/* Header */}
       <header className="mb-16 max-w-xl">
-        <p className="text-xs tracking-[0.25em] uppercase text-stone mb-3">Galería</p>
         <h1 className="font-serif text-5xl font-light text-charcoal mb-4">Pintura</h1>
         <p className="text-charcoal/60 leading-relaxed">
-          Acá está mi trabajo en pintura. Algunas obras están disponibles y otras
-          forman parte de colecciones particulares.
+          Óleo y técnica mixta. Algunas están disponibles, otras ya se fueron a vivir con otra gente.
         </p>
       </header>
 

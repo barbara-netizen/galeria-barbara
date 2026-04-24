@@ -23,24 +23,20 @@ export default function LiteraryPage() {
       </Link>
 
       <header className="mb-20 max-w-xl">
-        <p className="text-xs tracking-[0.25em] uppercase text-stone mb-3">Escritura</p>
         <h1 className="font-serif text-5xl font-light text-charcoal mb-4">Obra literaria</h1>
         <p className="text-charcoal/60 leading-relaxed">
-          Textos, antologías y servicios editoriales.
+          Tres libros digitales, una antología, y si tenés un proyecto editorial puedo darte una mano con él.
         </p>
       </header>
 
       {/* ─── SERVICIOS EDITORIALES ─────────────────────────────────────────── */}
       <section className="mb-24">
         <div className="max-w-3xl">
-          <p className="text-xs tracking-[0.25em] uppercase text-stone mb-3">Servicios</p>
           <h2 className="font-serif text-4xl sm:text-5xl font-light text-charcoal mb-6">
             Servicios Editoriales
           </h2>
           <p className="text-charcoal/60 leading-relaxed mb-10 max-w-2xl">
-            Si estás escribiendo un libro o tenés un proyecto editorial en mente, puedo acompañarte
-            en el proceso. Trabajo en corrección de textos, diseño editorial, ilustración de portadas
-            y maquetación. Escribime y charlamos.
+            Si estás con un libro o un proyecto editorial, charlemos. Corrijo, maqueto, diseño portadas. Laburo bien con quien sabe lo que quiere, y también con quien todavía no.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
