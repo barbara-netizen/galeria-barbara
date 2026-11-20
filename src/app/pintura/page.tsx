@@ -7,7 +7,7 @@ import type { Painting } from "@/types";
 export const metadata: Metadata = {
   title: "Pintura — Obras originales de Bárbara Gutiérrez",
   description:
-    "Galería de pinturas originales de Bárbara Gutiérrez: técnica mixta, óleo y acrílico. Algunas obras están disponibles para adquirir. Pintora argentina contemporánea radicada en Buenos Aires.",
+    "Galería de pinturas originales de Bárbara Gutiérrez: técnica mixta y óleo. Algunas obras están disponibles para adquirir. Pintora argentina contemporánea radicada en Buenos Aires.",
   alternates: { canonical: "/pintura" },
   openGraph: {
     title: "Pintura — Bárbara Gutiérrez",
